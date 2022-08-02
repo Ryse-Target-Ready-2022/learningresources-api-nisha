@@ -2,11 +2,16 @@ package com.tgt.rysetii.learningresourcesapi.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.tgt.rysetii.learningresourcesapi.entity.LearningResource;
 import com.tgt.rysetii.learningresourcesapi.repository.LearningResourceRepository;
 
+@Service
 public class LearningResourceService {
 	
+	@Autowired
 	LearningResourceRepository lr;
 	public void saveLearningResources(List<LearningResource> learningResources){
         for (LearningResource learningResource : learningResources)
@@ -36,6 +41,11 @@ public class LearningResourceService {
             return profitMargin2.compareTo(profitMargin1) ;
         });
         return learningResources;
+    }
+    
+    public void deleteLearningResourcesById(int id)
+    {
+    	this.lr.deleteById(id);
     }
 	
 }
